@@ -22,14 +22,14 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 1.3 Environment
 
-- [ ] Create `.env.example` with `VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_FORMSPREE_ID`
-- [ ] Create `.env` (add to `.gitignore` if not already)
+- [x] Create `.env.example` with `VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_FORMSPREE_ID`
+- [x] Create `.env` (add to `.gitignore` if not already)
 
 ### 1.4 Base Layout
 
-- [ ] Create `Header` component with logo/brand and nav links (Home, Privacy, Contact)
-- [ ] Create `Footer` component with copyright and nav links
-- [ ] Add favicon and apple-touch-icon to `public/`
+- [x] Create `Header` component with logo/brand and nav links (Home, Privacy, Contact)
+- [x] Create `Footer` component with copyright and nav links
+- [x] Add favicon and apple-touch-icon to `public/`
 
 **Phase 1 complete when:** Project runs locally, routes work, header/footer render on all pages.
 
