@@ -16,9 +16,9 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 1.2 Project Structure
 
-- [ ] Create folders: `src/components/ui`, `src/components/layout`, `src/pages`, `src/utils`, `src/api`
-- [ ] Set up React Router with routes: `/`, `/privacy`, `/contact`
-- [ ] Create `App.tsx` with `Outlet` and basic layout shell
+- [x] Create folders: `src/components/ui`, `src/components/layout`, `src/pages`, `src/utils`, `src/api`
+- [x] Set up React Router with routes: `/`, `/privacy`, `/contact`
+- [x] Create `App.tsx` with `Outlet` and basic layout shell
 
 ### 1.3 Environment
 
