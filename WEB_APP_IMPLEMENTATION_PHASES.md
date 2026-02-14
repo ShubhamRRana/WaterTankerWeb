@@ -41,21 +41,23 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 2.1 Landing Page Content
 
-- [ ] Create `Landing.tsx` page
-- [ ] Add hero section with app name and tagline
-- [ ] Add brief description of the Water Tanker app
+- [x] Create `Landing.tsx` page
+- [x] Add hero section with app name and tagline
+- [x] Add brief description of the Water Tanker app
 
 ### 2.2 Download Links
 
-- [ ] Add App Store button/badge linking to `import.meta.env.VITE_APP_STORE_URL`
-- [ ] Add Play Store button/badge linking to `import.meta.env.VITE_PLAY_STORE_URL`
-- [ ] Use official badge assets (download from Apple/Google) or styled buttons
-- [ ] Ensure links open in new tab (`target="_blank"`, `rel="noopener noreferrer"`)
+- [x] Add App Store button/badge linking to `import.meta.env.VITE_APP_STORE_URL`
+- [x] Add Play Store button/badge linking to `import.meta.env.VITE_PLAY_STORE_URL`
+- [x] Use official badge assets (download from Apple/Google) or styled buttons
+- [x] Ensure links open in new tab (`target="_blank"`, `rel="noopener noreferrer"`)
+
+**Implementation:** Local App Store badge (`public/app-store-badge.svg`), official Google Play badge URL. Fallback message when neither store URL is configured.
 
 ### 2.3 Responsive Design
 
-- [ ] Make landing page responsive (mobile, tablet, desktop)
-- [ ] Stack download buttons vertically on mobile, side-by-side on larger screens
+- [x] Make landing page responsive (mobile, tablet, desktop)
+- [x] Stack download buttons vertically on mobile, side-by-side on larger screens
 
 **Phase 2 complete when:** Landing page displays correctly, store links work, layout is responsive.
 
@@ -67,21 +69,21 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 3.1 Content Structure
 
-- [ ] Create `PrivacyPolicy.tsx` page
-- [ ] Add sections: Introduction, Data We Collect, How We Use Data, Third Parties, User Rights, Contact
+- [x] Create `PrivacyPolicy.tsx` page
+- [x] Add sections: Introduction, Data We Collect, How We Use Data, Third Parties, User Rights, Contact
 
 ### 3.2 Content
 
-- [ ] Write or paste privacy policy text (or use a template and customize)
-- [ ] Include contact email/address for privacy inquiries
-- [ ] Add "Last updated" date
+- [x] Write or paste privacy policy text (or use a template and customize)
+- [x] Include contact email/address for privacy inquiries
+- [x] Add "Last updated" date
 
 ### 3.3 Styling
 
-- [ ] Style for readability (max-width, line-height, headings)
-- [ ] Ensure mobile-friendly layout
+- [x] Style for readability (max-width, line-height, headings)
+- [x] Ensure mobile-friendly layout
 
-**Phase 3 complete when:** Privacy policy page is live at `/privacy` with full content.
+**Phase 3 complete when:** Privacy policy page is live at `/privacy` with full content. ✓ **Phase 3 completed**
 
 ---
 
@@ -91,27 +93,27 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 4.1 Form Service Setup
 
-- [ ] Choose form service (Formspree recommended for simplicity)
-- [ ] Create Formspree form, get form ID
-- [ ] Add `VITE_FORMSPREE_ID` to `.env`
+- [x] Choose form service (Formspree recommended for simplicity)
+- [x] Create Formspree form, get form ID — see `FORMSPREE_SETUP.md` for step-by-step guide
+- [x] Add `VITE_FORMSPREE_ID` to `.env` (already in `.env.example`; replace `your-form-id` with your Formspree form ID)
 
 ### 4.2 Form Component
 
-- [ ] Create `Contact.tsx` page with form
-- [ ] Fields: name, email, subject, message
-- [ ] Use React Hook Form + Zod for validation
-- [ ] Add loading state and success/error messages
+- [x] Create `Contact.tsx` page with form
+- [x] Fields: name, email, subject, message
+- [x] Use React Hook Form + Zod for validation
+- [x] Add loading state and success/error messages
 
 ### 4.3 Form Submission
 
-- [ ] On submit: POST to Formspree endpoint (or Netlify Forms if using Netlify)
-- [ ] Handle success: show thank-you message
-- [ ] Handle error: show error message, keep form data
+- [x] On submit: POST to Formspree endpoint (or Netlify Forms if using Netlify)
+- [x] Handle success: show thank-you message
+- [x] Handle error: show error message, keep form data
 
 ### 4.4 Styling
 
-- [ ] Style form inputs and button to match site theme
-- [ ] Ensure form is accessible (labels, focus states)
+- [x] Style form inputs and button to match site theme
+- [x] Ensure form is accessible (labels, focus states)
 
 **Phase 4 complete when:** Contact form validates, submits successfully, and emails are received.
 
