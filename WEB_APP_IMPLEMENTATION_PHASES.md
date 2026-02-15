@@ -125,17 +125,21 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 5.1 Polish
 
-- [ ] Add loading states where needed
-- [ ] Ensure consistent spacing and typography
-- [ ] Test all links (store URLs, nav, footer)
-- [ ] Test form on mobile and desktop
-- [ ] Add meta tags for SEO (title, description)
+- [x] Add loading states where needed
+- [x] Ensure consistent spacing and typography
+- [x] Test all links (store URLs, nav, footer)
+- [x] Test form on mobile and desktop
+- [x] Add meta tags for SEO (title, description)
+
+**Phase 5.1 implementation notes:** Added `PageLoader` component and `Suspense` boundary for route loading; `loading="lazy"` on store badge images; `react-helmet-async` for per-page SEO (title, description, og:title); base typography and spacing utilities in `index.css` and `tailwind.config.js`. Run `npm run dev` and manually verify store URLs, nav/footer links, and form on mobile/desktop.
 
 ### 5.2 Deployment Prep
 
-- [ ] Choose hosting (Vercel or Netlify)
-- [ ] Set env vars in hosting dashboard (`VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_FORMSPREE_ID`)
-- [ ] Ensure build succeeds: `npm run build`
+- [x] Choose hosting (Vercel or Netlify)
+- [x] Set env vars in hosting dashboard (`VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_FORMSPREE_ID`)
+- [x] Ensure build succeeds: `npm run build`
+
+**Phase 5.2 implementation notes:** Build verified with `npm run build`. Added `vercel.json` and `netlify.toml` for Vercel/Netlify. Created `DEPLOYMENT.md` with env var table and step-by-step hosting instructions. Set env vars in your chosen platform's dashboard before first deploy.
 
 ### 5.3 Deploy
 
@@ -162,5 +166,6 @@ This document breaks down the web landing site build into phases. Complete each 
 ## Quick Reference
 
 - **Tech stack:** See `WEB_APP_TECH_STACK.md`
+- **Deployment:** See `DEPLOYMENT.md` for Vercel/Netlify setup
 - **Store URLs:** Use placeholder URLs until app is published; update when live
 - **Form service:** Formspree free tier = 50 submissions/month

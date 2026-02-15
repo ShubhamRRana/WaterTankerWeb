@@ -1,8 +1,18 @@
+import { Helmet } from 'react-helmet-async'
 import { Droplets } from 'lucide-react'
+
+const PAGE_TITLE = 'Water Tanker — Book Water Tankers On Demand'
+const PAGE_DESCRIPTION = 'Water Tanker connects you with trusted water suppliers. Book water tankers for home, construction, or events — simple, fast, reliable.'
 
 function Landing() {
   return (
     <main className="flex-1">
+      <Helmet>
+        <title>{PAGE_TITLE}</title>
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+      </Helmet>
       {/* Hero section — responsive: mobile, tablet, desktop */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/10 text-primary mb-4 sm:mb-6">
@@ -38,6 +48,7 @@ function Landing() {
                 src="/app-store-badge.svg"
                 alt="Download on the App Store"
                 className="h-11 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
+                loading="lazy"
               />
             </a>
           )}
@@ -53,6 +64,7 @@ function Landing() {
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                 alt="Get it on Google Play"
                 className="h-11 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
+                loading="lazy"
               />
             </a>
           )}

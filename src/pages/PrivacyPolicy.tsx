@@ -1,9 +1,16 @@
+import { Helmet } from 'react-helmet-async'
+
 function PrivacyPolicy() {
   const contactEmail = 'privacy@watertanker.com'
   const lastUpdated = '14 February 2025'
 
   return (
     <main className="flex-1 min-h-screen">
+      <Helmet>
+        <title>Privacy Policy — Water Tanker</title>
+        <meta name="description" content="Water Tanker Privacy Policy. Learn how we collect, use, and protect your data when you use our water tanker booking app." />
+        <meta property="og:title" content="Privacy Policy — Water Tanker" />
+      </Helmet>
       <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 max-w-3xl">
         <header className="mb-8 sm:mb-10">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-3 leading-tight">

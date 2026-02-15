@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { Helmet } from 'react-helmet-async'
 import { Loader2 } from 'lucide-react'
 import { submitContactForm, type ContactFormData } from '../api/contact'
 
@@ -46,6 +47,11 @@ function Contact() {
 
   return (
     <main className="flex-1 min-h-screen">
+      <Helmet>
+        <title>Contact Us — Water Tanker</title>
+        <meta name="description" content="Contact Water Tanker. Have a question or feedback? Send us a message and we'll get back to you." />
+        <meta property="og:title" content="Contact Us — Water Tanker" />
+      </Helmet>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 max-w-xl">
         <header className="mb-8 sm:mb-10">
           <h1 className="text-2xl sm:text-3xl font-bold text-primary mb-2">
