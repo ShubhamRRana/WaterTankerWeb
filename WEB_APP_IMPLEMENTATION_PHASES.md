@@ -143,9 +143,11 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 5.3 Deploy
 
-- [ ] Connect repo to Vercel/Netlify
-- [ ] Deploy and verify production URL
-- [ ] Test production site (store links, form, privacy page)
+- [x] Connect repo to Vercel/Netlify
+- [x] Deploy and verify production URL
+- [x] Test production site (store links, form, privacy page)
+
+**Phase 5.3 implementation notes:** Added `npm run deploy` script (Vercel CLI); `.vercel` in `.gitignore`; Phase 5.3 step-by-step guide in `DEPLOYMENT.md` (connect repo, add env vars, deploy, verify). Run `npm run deploy` or follow `DEPLOYMENT.md` to connect your repo and deploy. After deploy, verify store links, contact form, and privacy page on the production URL.
 
 **Phase 5 complete when:** Site is live, all features work in production.
 

@@ -44,7 +44,40 @@ Set these in your hosting dashboard before deploying:
 
 ---
 
-## Post-Deploy Checklist
+---
+
+## Phase 5.3: Deploy (Step-by-Step)
+
+### Option A: Vercel (Recommended)
+
+1. **Connect repo**
+   - Go to [vercel.com](https://vercel.com) and sign in with GitHub
+   - Click **Add New** → **Project**
+   - Import the `WaterTankerWeb` (or your repo name) repository
+   - Vercel auto-detects Vite; confirm Build Command: `npm run build`, Output: `dist`
+
+2. **Add environment variables**
+   - In project **Settings** → **Environment Variables**, add:
+     - `VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
+
+3. **Deploy**
+   - Click **Deploy** (or push to `main` for auto-deploy)
+   - Or run locally: `npx vercel --prod` (after `vercel link` if first time)
+
+### Option B: Netlify
+
+1. **Connect repo**
+   - Go to [netlify.com](https://netlify.com) and sign in with GitHub
+   - Click **Add new site** → **Import an existing project**
+   - Connect your repo; `netlify.toml` provides build settings
+
+2. **Add environment variables**
+   - **Site settings** → **Environment variables** → add the four `VITE_*` vars
+
+3. **Deploy**
+   - Trigger deploy from Netlify dashboard or push to `main`
+
+### Verify Production
 
 - [ ] Store links work (App Store, Play Store)
 - [ ] Contact form submits successfully
