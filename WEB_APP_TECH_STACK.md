@@ -10,7 +10,7 @@ This document describes the tech stack and architecture for a **simple web landi
 |------|-------------|
 | **Goal** | Marketing/landing site: App Store / Play Store download links, Privacy Policy, and Contact/Query form. **No bookings from web.** |
 | **App type** | Static/marketing site — responsive, minimal. |
-| **Backend** | None required. Contact form can use Formspree, Netlify Forms, or similar form-to-email service. |
+| **Backend** | Supabase (same as mobile app). Contact form stores submissions in `contact_submissions` table. |
 | **Auth** | None — all pages are public. |
 | **Deployment** | Static hosting (Vercel, Netlify, or similar); HTTPS required. |
 
@@ -26,7 +26,7 @@ This document describes the tech stack and architecture for a **simple web landi
 | **Build tool** | Vite | 5.x (fast dev, optimized production build) |
 | **Language** | TypeScript | 5.x |
 | **Routing** | React Router | v6 |
-| **Contact form** | Formspree, Netlify Forms, or FormSubmit | Form-to-email; no backend code. |
+| **Contact form** | Supabase | Inserts into `contact_submissions` table; same backend as mobile app. |
 | **Forms** | React Hook Form | 7.x |
 | **Validation** | Zod | 3.x |
 
@@ -82,17 +82,17 @@ water-tanker-web/
 
 ---
 
-## 4. Contact Form — No Backend Required
+## 4. Contact Form — Supabase
 
-Since the web app does not take bookings, **Supabase is not needed**. The contact form can use a form-to-email service:
+The contact form uses **Supabase** (same project as the Water Tanker mobile app):
 
-| Option | How it works | Notes |
-|--------|--------------|-------|
-| **Formspree** | Form POST to Formspree endpoint; emails sent to you | Free tier: 50 submissions/mo; no backend. |
-| **Netlify Forms** | Add `netlify` attribute to form; Netlify handles submissions | Free if hosting on Netlify; submissions in Netlify dashboard. |
-| **FormSubmit** | Form POST to FormSubmit; forwards to your email | Free; no signup for basic use. |
+| Aspect | Details |
+|--------|---------|
+| **Table** | `contact_submissions` (name, email, subject, message, created_at) |
+| **Auth** | Anonymous inserts allowed via RLS; no login required |
+| **Viewing** | Supabase Dashboard → Table Editor, or SQL queries |
 
-**Implementation:** Use a standard HTML form with `action` pointing to the service URL, or `fetch` from React. No database, no Supabase, no API keys (except optional Formspree token for spam filtering).
+**Implementation:** `@supabase/supabase-js` client; `submitContactForm()` inserts into `contact_submissions`. See `SUPABASE_SETUP.md` for setup.
 
 ---
 
@@ -117,7 +117,7 @@ Since the web app does not take bookings, **Supabase is not needed**. The contac
 
 - Form fields: name, email, subject, message.
 - Use React Hook Form + Zod for validation.
-- On submit: POST to Formspree / Netlify Forms / FormSubmit — no backend required.
+- On submit: insert into Supabase `contact_submissions` table.
 
 ---
 
@@ -130,8 +130,9 @@ Since the web app does not take bookings, **Supabase is not needed**. The contac
 VITE_APP_STORE_URL=https://apps.apple.com/app/your-app-id
 VITE_PLAY_STORE_URL=https://play.google.com/store/apps/details?id=your.package.name
 
-# Optional: Formspree form ID (if using Formspree for contact form)
-# VITE_FORMSPREE_ID=your-form-id
+# Supabase (for contact form) — see SUPABASE_SETUP.md
+# VITE_SUPABASE_URL=https://your-project.supabase.co
+# VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
 
 ### 6.2 Constants
@@ -152,7 +153,7 @@ VITE_PLAY_STORE_URL=https://play.google.com/store/apps/details?id=your.package.n
 
 | Phase | Scope | Deliverable |
 |-------|--------|-------------|
-| 1 | Project init, form service setup (Formspree/Netlify Forms) | Base setup |
+| 1 | Project init, Supabase setup for contact form | Base setup |
 | 2 | Landing page (App Store / Play Store links), Privacy Policy, Contact form | Full landing site live |
 
 ---
@@ -160,7 +161,7 @@ VITE_PLAY_STORE_URL=https://play.google.com/store/apps/details?id=your.package.n
 ## 9. Checklist Before Development
 
 - [ ] App Store and Play Store URLs configured in env.
-- [ ] Form service chosen (Formspree, Netlify Forms, or FormSubmit) and configured.
+- [ ] Supabase configured (URL + anon key); `contact_submissions` table created.
 - [ ] Node.js 18+ and npm/pnpm installed.
 - [ ] Hosting chosen (e.g. Vercel, Netlify).
 
@@ -173,7 +174,7 @@ VITE_PLAY_STORE_URL=https://play.google.com/store/apps/details?id=your.package.n
 | **Purpose** | Landing site only — no bookings; directs users to mobile app |
 | **Stack** | React + TypeScript + Vite + React Router |
 | **UI** | Tailwind CSS + (optional) shadcn/ui |
-| **Backend** | None — form-to-email service (Formspree, Netlify Forms, etc.) |
+| **Backend** | Supabase — contact form stores in `contact_submissions` |
 | **Pages** | Landing (store links), Privacy Policy, Contact/Query form |
 | **Deploy** | Static build (Vercel/Netlify) with HTTPS |
 

@@ -1,9 +1,9 @@
 /**
- * Contact form API — Formspree integration
- * POSTs to https://formspree.io/f/{formId}
+ * Contact form API — Supabase integration
+ * Inserts submissions into contact_submissions table
  */
 
-const FORMSPREE_BASE = 'https://formspree.io/f'
+import { supabase } from '../lib/supabase'
 
 export interface ContactFormData {
   name: string
@@ -12,35 +12,21 @@ export interface ContactFormData {
   message: string
 }
 
-export function getFormspreeEndpoint(): string | null {
-  const formId = import.meta.env.VITE_FORMSPREE_ID
-  if (!formId || formId === 'your-form-id') return null
-  return `${FORMSPREE_BASE}/${formId}`
-}
-
 export async function submitContactForm(data: ContactFormData): Promise<{ ok: boolean; error?: string }> {
-  const endpoint = getFormspreeEndpoint()
-  if (!endpoint) {
-    return { ok: false, error: 'Form service not configured. Add VITE_FORMSPREE_ID to .env' }
+  if (!supabase) {
+    return { ok: false, error: 'Form service not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env' }
   }
 
   try {
-    const body = new URLSearchParams({
+    const { error } = await supabase.from('contact_submissions').insert({
       name: data.name,
       email: data.email,
       subject: data.subject,
       message: data.message,
     })
 
-    const res = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body.toString(),
-    })
-
-    if (!res.ok) {
-      const text = await res.text()
-      return { ok: false, error: text || `Request failed (${res.status})` }
+    if (error) {
+      return { ok: false, error: error.message }
     }
 
     return { ok: true }

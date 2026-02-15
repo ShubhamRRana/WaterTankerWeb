@@ -22,7 +22,7 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 1.3 Environment
 
-- [x] Create `.env.example` with `VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_FORMSPREE_ID`
+- [x] Create `.env.example` with `VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
 - [x] Create `.env` (add to `.gitignore` if not already)
 
 ### 1.4 Base Layout
@@ -93,9 +93,9 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 4.1 Form Service Setup
 
-- [x] Choose form service (Formspree recommended for simplicity)
-- [x] Create Formspree form, get form ID — see `FORMSPREE_SETUP.md` for step-by-step guide
-- [x] Add `VITE_FORMSPREE_ID` to `.env` (already in `.env.example`; replace `your-form-id` with your Formspree form ID)
+- [x] Use Supabase (same backend as Water Tanker mobile app)
+- [x] Create `contact_submissions` table — see `SUPABASE_SETUP.md` for step-by-step guide
+- [x] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to `.env`
 
 ### 4.2 Form Component
 
@@ -106,7 +106,7 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 4.3 Form Submission
 
-- [x] On submit: POST to Formspree endpoint (or Netlify Forms if using Netlify)
+- [x] On submit: insert into Supabase `contact_submissions` table
 - [x] Handle success: show thank-you message
 - [x] Handle error: show error message, keep form data
 
@@ -115,7 +115,7 @@ This document breaks down the web landing site build into phases. Complete each 
 - [x] Style form inputs and button to match site theme
 - [x] Ensure form is accessible (labels, focus states)
 
-**Phase 4 complete when:** Contact form validates, submits successfully, and emails are received.
+**Phase 4 complete when:** Contact form validates, submits successfully, and submissions appear in Supabase.
 
 ---
 
@@ -136,7 +136,7 @@ This document breaks down the web landing site build into phases. Complete each 
 ### 5.2 Deployment Prep
 
 - [x] Choose hosting (Vercel or Netlify)
-- [x] Set env vars in hosting dashboard (`VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_FORMSPREE_ID`)
+- [x] Set env vars in hosting dashboard (`VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`)
 - [x] Ensure build succeeds: `npm run build`
 
 **Phase 5.2 implementation notes:** Build verified with `npm run build`. Added `vercel.json` and `netlify.toml` for Vercel/Netlify. Created `DEPLOYMENT.md` with env var table and step-by-step hosting instructions. Set env vars in your chosen platform's dashboard before first deploy.
@@ -168,4 +168,4 @@ This document breaks down the web landing site build into phases. Complete each 
 - **Tech stack:** See `WEB_APP_TECH_STACK.md`
 - **Deployment:** See `DEPLOYMENT.md` for Vercel/Netlify setup
 - **Store URLs:** Use placeholder URLs until app is published; update when live
-- **Form service:** Formspree free tier = 50 submissions/month
+- **Form service:** Supabase — see `SUPABASE_SETUP.md`

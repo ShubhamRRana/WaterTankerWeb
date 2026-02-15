@@ -15,7 +15,8 @@ Set these in your hosting dashboard before deploying:
 |----------|-------------|---------|
 | `VITE_APP_STORE_URL` | App Store download URL | `https://apps.apple.com/app/your-app-id` |
 | `VITE_PLAY_STORE_URL` | Play Store download URL | `https://play.google.com/store/apps/details?id=your.package.name` |
-| `VITE_FORMSPREE_ID` | Formspree form ID for contact form | `myzkjveq` |
+| `VITE_SUPABASE_URL` | Supabase project URL for contact form | `https://xxxxx.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY` | Supabase anon/public key | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` |
 
 > **Note:** Vite only exposes env vars prefixed with `VITE_`. These are baked into the build at deploy time.
 
