@@ -23,6 +23,27 @@
       aria-[invalid=true]:border-red-500 aria-[invalid=true]:focus:border-red-500 aria-[invalid=true]:focus:ring-red-500/30;
   }
 
+  /* Cursor-following spotlight glow for contact inputs */
+  .glow-input-wrapper {
+    @apply relative w-full rounded-lg;
+    --glow-x: -999px;
+    --glow-y: -999px;
+  }
+  .glow-input-glow {
+    @apply absolute pointer-events-none;
+    inset: -4px;
+    border-radius: 0.5rem;
+    background: radial-gradient(
+      circle 100px at var(--glow-x) var(--glow-y),
+      rgba(255, 210, 63, 1),
+      transparent 60%
+    );
+    transition: opacity 0.12s ease;
+  }
+  .glow-input-wrapper .input-field {
+    @apply relative z-10;
+  }
+
   .btn-submit {
     @apply w-full sm:w-auto px-6 py-3 rounded-lg bg-accent text-white font-semibold
       hover:bg-accent/90 hover:shadow-md

@@ -68,17 +68,24 @@ function Contact() {
             <label htmlFor="name" className="block text-sm font-medium text-primary mb-1.5">
               Name
             </label>
-            <input
-              id="name"
-              type="text"
-              {...register('name')}
-              className="input-field"
-              placeholder="Your name"
-              autoComplete="name"
-              disabled={isSubmitting}
-              aria-invalid={!!errors.name}
-              aria-describedby={errors.name ? 'name-error' : undefined}
-            />
+            <div
+              className="glow-input-wrapper"
+              onMouseMove={(e) => { e.currentTarget.style.setProperty('--glow-x', `${e.nativeEvent.offsetX}px`); e.currentTarget.style.setProperty('--glow-y', `${e.nativeEvent.offsetY}px`) }}
+              onMouseLeave={(e) => { e.currentTarget.style.setProperty('--glow-x', '-999px'); e.currentTarget.style.setProperty('--glow-y', '-999px') }}
+            >
+              <div className="glow-input-glow" aria-hidden />
+              <input
+                id="name"
+                type="text"
+                {...register('name')}
+                className="input-field"
+                placeholder="Your name"
+                autoComplete="name"
+                disabled={isSubmitting}
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? 'name-error' : undefined}
+              />
+            </div>
             {errors.name && (
               <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">
                 {errors.name.message}
@@ -91,17 +98,24 @@ function Contact() {
             <label htmlFor="email" className="block text-sm font-medium text-primary mb-1.5">
               Email
             </label>
-            <input
-              id="email"
-              type="email"
-              {...register('email')}
-              className="input-field"
-              placeholder="your@email.com"
-              autoComplete="email"
-              disabled={isSubmitting}
-              aria-invalid={!!errors.email}
-              aria-describedby={errors.email ? 'email-error' : undefined}
-            />
+            <div
+              className="glow-input-wrapper"
+              onMouseMove={(e) => { e.currentTarget.style.setProperty('--glow-x', `${e.nativeEvent.offsetX}px`); e.currentTarget.style.setProperty('--glow-y', `${e.nativeEvent.offsetY}px`) }}
+              onMouseLeave={(e) => { e.currentTarget.style.setProperty('--glow-x', '-999px'); e.currentTarget.style.setProperty('--glow-y', '-999px') }}
+            >
+              <div className="glow-input-glow" aria-hidden />
+              <input
+                id="email"
+                type="email"
+                {...register('email')}
+                className="input-field"
+                placeholder="your@email.com"
+                autoComplete="email"
+                disabled={isSubmitting}
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? 'email-error' : undefined}
+              />
+            </div>
             {errors.email && (
               <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
                 {errors.email.message}
@@ -114,16 +128,23 @@ function Contact() {
             <label htmlFor="subject" className="block text-sm font-medium text-primary mb-1.5">
               Subject
             </label>
-            <input
-              id="subject"
-              type="text"
-              {...register('subject')}
-              className="input-field"
-              placeholder="What is this about?"
-              disabled={isSubmitting}
-              aria-invalid={!!errors.subject}
-              aria-describedby={errors.subject ? 'subject-error' : undefined}
-            />
+            <div
+              className="glow-input-wrapper"
+              onMouseMove={(e) => { e.currentTarget.style.setProperty('--glow-x', `${e.nativeEvent.offsetX}px`); e.currentTarget.style.setProperty('--glow-y', `${e.nativeEvent.offsetY}px`) }}
+              onMouseLeave={(e) => { e.currentTarget.style.setProperty('--glow-x', '-999px'); e.currentTarget.style.setProperty('--glow-y', '-999px') }}
+            >
+              <div className="glow-input-glow" aria-hidden />
+              <input
+                id="subject"
+                type="text"
+                {...register('subject')}
+                className="input-field"
+                placeholder="What is this about?"
+                disabled={isSubmitting}
+                aria-invalid={!!errors.subject}
+                aria-describedby={errors.subject ? 'subject-error' : undefined}
+              />
+            </div>
             {errors.subject && (
               <p id="subject-error" className="mt-1 text-sm text-red-600" role="alert">
                 {errors.subject.message}
@@ -136,16 +157,23 @@ function Contact() {
             <label htmlFor="message" className="block text-sm font-medium text-primary mb-1.5">
               Message
             </label>
-            <textarea
-              id="message"
-              rows={5}
-              {...register('message')}
-              className="input-field resize-y min-h-[120px]"
-              placeholder="Your message..."
-              disabled={isSubmitting}
-              aria-invalid={!!errors.message}
-              aria-describedby={errors.message ? 'message-error' : undefined}
-            />
+            <div
+              className="glow-input-wrapper"
+              onMouseMove={(e) => { e.currentTarget.style.setProperty('--glow-x', `${e.nativeEvent.offsetX}px`); e.currentTarget.style.setProperty('--glow-y', `${e.nativeEvent.offsetY}px`) }}
+              onMouseLeave={(e) => { e.currentTarget.style.setProperty('--glow-x', '-999px'); e.currentTarget.style.setProperty('--glow-y', '-999px') }}
+            >
+              <div className="glow-input-glow" aria-hidden />
+              <textarea
+                id="message"
+                rows={5}
+                {...register('message')}
+                className="input-field resize-y min-h-[120px]"
+                placeholder="Your message..."
+                disabled={isSubmitting}
+                aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? 'message-error' : undefined}
+              />
+            </div>
             {errors.message && (
               <p id="message-error" className="mt-1 text-sm text-red-600" role="alert">
                 {errors.message.message}
