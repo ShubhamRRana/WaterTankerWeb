@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async'
 
 function PrivacyPolicy() {
-  const contactEmail = 'privacy@watertanker.com'
-  const lastUpdated = '14 February 2025'
+  const contactEmail = 'support@tankerhub.in'
+  const lastUpdated = '23 February 2025'
 
   return (
     <main className="flex-1 min-h-screen">
