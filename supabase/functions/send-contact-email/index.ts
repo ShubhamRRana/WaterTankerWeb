@@ -10,7 +10,7 @@
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
 const CONTACT_WEBHOOK_SECRET = Deno.env.get('CONTACT_WEBHOOK_SECRET')
 const TO_EMAIL = 'support@tankerhub.in'
-const FROM_EMAIL = Deno.env.get('FROM_EMAIL') ?? 'Water Tanker <onboarding@resend.dev>'
+const FROM_EMAIL = Deno.env.get('FROM_EMAIL') ?? 'Water Tanker <noreply@support.tankerhub.in>'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
