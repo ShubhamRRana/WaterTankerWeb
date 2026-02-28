@@ -36,7 +36,21 @@ export async function submitContactForm(data: ContactFormData): Promise<{ ok: bo
     })
 
     if (fnError) {
-      return { ok: false, error: fnError.message }
+      let message = fnError.message
+      const errWithContext = fnError as { context?: Response }
+      if (errWithContext.context && typeof (errWithContext.context as Response).json === 'function') {
+        try {
+          const body = await (errWithContext.context as Response).json() as { error?: string }
+          if (body?.error) message = body.error
+        } catch {
+          // keep fnError.message if parsing fails
+        }
+      }
+      if (message === 'Edge Function returned a non-2xx status code') {
+        message =
+          'Contact email service could not complete. Ensure the Edge Function is deployed and RESEND_API_KEY is set in Supabase. If you use CONTACT_WEBHOOK_SECRET, set the same value as VITE_CONTACT_WEBHOOK_SECRET in .env. See SUPABASE_SETUP.md.'
+      }
+      return { ok: false, error: message }
     }
 
     return { ok: true }
