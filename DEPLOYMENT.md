@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide covers deploying the Water Tanker Web App to Vercel or Netlify.
+This guide covers deploying the Water Tanker Web App to Vercel.
 
 ## Prerequisites
 
@@ -34,21 +34,9 @@ Set these in your hosting dashboard before deploying:
 
 ---
 
-## Netlify
-
-1. Go to [netlify.com](https://netlify.com) and sign in with GitHub.
-2. Click **Add new site** → **Import an existing project**.
-3. Connect your repo. Netlify uses `netlify.toml` for build settings.
-4. Add environment variables under **Site settings** → **Environment variables**.
-5. Deploy.
-
----
-
----
-
 ## Phase 5.3: Deploy (Step-by-Step)
 
-### Option A: Vercel (Recommended)
+### Vercel
 
 1. **Connect repo**
    - Go to [vercel.com](https://vercel.com) and sign in with GitHub
@@ -63,19 +51,6 @@ Set these in your hosting dashboard before deploying:
 3. **Deploy**
    - Click **Deploy** (or push to `main` for auto-deploy)
    - Or run locally: `npx vercel --prod` (after `vercel link` if first time)
-
-### Option B: Netlify
-
-1. **Connect repo**
-   - Go to [netlify.com](https://netlify.com) and sign in with GitHub
-   - Click **Add new site** → **Import an existing project**
-   - Connect your repo; `netlify.toml` provides build settings
-
-2. **Add environment variables**
-   - **Site settings** → **Environment variables** → add the four `VITE_*` vars
-
-3. **Deploy**
-   - Trigger deploy from Netlify dashboard or push to `main`
 
 ### Verify Production
 

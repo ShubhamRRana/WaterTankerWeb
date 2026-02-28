@@ -135,15 +135,15 @@ This document breaks down the web landing site build into phases. Complete each 
 
 ### 5.2 Deployment Prep
 
-- [x] Choose hosting (Vercel or Netlify)
+- [x] Choose hosting (Vercel)
 - [x] Set env vars in hosting dashboard (`VITE_APP_STORE_URL`, `VITE_PLAY_STORE_URL`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`)
 - [x] Ensure build succeeds: `npm run build`
 
-**Phase 5.2 implementation notes:** Build verified with `npm run build`. Added `vercel.json` and `netlify.toml` for Vercel/Netlify. Created `DEPLOYMENT.md` with env var table and step-by-step hosting instructions. Set env vars in your chosen platform's dashboard before first deploy.
+**Phase 5.2 implementation notes:** Build verified with `npm run build`. Added `vercel.json` for Vercel. Created `DEPLOYMENT.md` with env var table and step-by-step hosting instructions. Set env vars in Vercel project settings before first deploy.
 
 ### 5.3 Deploy
 
-- [x] Connect repo to Vercel/Netlify
+- [x] Connect repo to Vercel
 - [x] Deploy and verify production URL
 - [x] Test production site (store links, form, privacy page)
 
@@ -168,6 +168,6 @@ This document breaks down the web landing site build into phases. Complete each 
 ## Quick Reference
 
 - **Tech stack:** See `WEB_APP_TECH_STACK.md`
-- **Deployment:** See `DEPLOYMENT.md` for Vercel/Netlify setup
+- **Deployment:** See `DEPLOYMENT.md` for Vercel setup
 - **Store URLs:** Use placeholder URLs until app is published; update when live
 - **Form service:** Supabase — see `SUPABASE_SETUP.md`

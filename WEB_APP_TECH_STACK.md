@@ -12,7 +12,7 @@ This document describes the tech stack and architecture for a **simple web landi
 | **App type** | Static/marketing site — responsive, minimal. |
 | **Backend** | Supabase (same as mobile app). Contact form stores submissions in `contact_submissions` table. |
 | **Auth** | None — all pages are public. |
-| **Deployment** | Static hosting (Vercel, Netlify, or similar); HTTPS required. |
+| **Deployment** | Static hosting (Vercel or similar); HTTPS required. |
 
 ---
 
@@ -145,7 +145,7 @@ VITE_PLAY_STORE_URL=https://play.google.com/store/apps/details?id=your.package.n
 
 - **No backend**: Static site; form submissions handled by third-party service.
 - **Env**: Never commit `.env`; use `VITE_*` for store links and optional form config.
-- **HTTPS**: Required; Vercel/Netlify provide HTTPS by default.
+- **HTTPS**: Required; Vercel provides HTTPS by default.
 
 ---
 
@@ -163,7 +163,7 @@ VITE_PLAY_STORE_URL=https://play.google.com/store/apps/details?id=your.package.n
 - [ ] App Store and Play Store URLs configured in env.
 - [ ] Supabase configured (URL + anon key); `contact_submissions` table created.
 - [ ] Node.js 18+ and npm/pnpm installed.
-- [ ] Hosting chosen (e.g. Vercel, Netlify).
+- [ ] Hosting chosen (e.g. Vercel).
 
 ---
 
@@ -176,6 +176,6 @@ VITE_PLAY_STORE_URL=https://play.google.com/store/apps/details?id=your.package.n
 | **UI** | Tailwind CSS + (optional) shadcn/ui |
 | **Backend** | Supabase — contact form stores in `contact_submissions` |
 | **Pages** | Landing (store links), Privacy Policy, Contact/Query form |
-| **Deploy** | Static build (Vercel/Netlify) with HTTPS |
+| **Deploy** | Static build (Vercel) with HTTPS |
 
 The web app supports the mobile app by providing download links, privacy policy, and a way for users to submit queries.
