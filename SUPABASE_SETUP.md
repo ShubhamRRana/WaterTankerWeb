@@ -83,13 +83,29 @@ These map directly to the `contact_submissions` table columns.
 
 ---
 
-## Step 6: Email Notifications (Optional)
+## Step 6: Email to support@tankerhub.in (Optional)
 
-Supabase does not send emails automatically. To get notified on new submissions:
+Submissions are stored in the database only until you enable the Edge Function. To send each submission to **support@tankerhub.in**:
 
-1. **Supabase Edge Function** — Trigger on insert, call Resend/SendGrid/etc.
-2. **Database webhook** — Use Supabase webhooks to POST to an external service
-3. **Manual** — Check the dashboard periodically
+### 6a. Resend setup
+
+1. Sign up at [resend.com](https://resend.com) and create an **API key**.
+2. (Recommended) Verify your domain in Resend so you can send from e.g. `noreply@tankerhub.in`. Until then, Resend’s default sender works for testing.
+
+### 6b. Deploy the Edge Function
+
+1. Install the [Supabase CLI](https://supabase.com/docs/guides/cli#installation) and log in: `supabase login`.
+2. Link the project (from the project root):  
+   `supabase link --project-ref YOUR_PROJECT_REF`  
+   (Find **Project ref** in Dashboard → Project Settings → General.)
+3. From the project root, deploy the function:  
+   `supabase functions deploy send-contact-email`
+4. In **Supabase Dashboard** → **Edge Functions** → **send-contact-email** → **Secrets**, add:
+   - **RESEND_API_KEY** — your Resend API key (required).
+   - **CONTACT_WEBHOOK_SECRET** — (optional) a random string; if set, the client must send the same value so only your app can trigger the function. Add the same value in your app env as `VITE_CONTACT_WEBHOOK_SECRET`.
+   - **FROM_EMAIL** — (optional) e.g. `Water Tanker <noreply@tankerhub.in>`. If unset, uses Resend’s default sender.
+
+After this, each contact form submit will still insert into `contact_submissions` and will also trigger the function to email **support@tankerhub.in** (with reply-to set to the sender’s email).
 
 ---
 
@@ -101,6 +117,7 @@ Supabase does not send emails automatically. To get notified on new submissions:
 | **403 / RLS policy violation** | Verify the `anon` insert policy exists on `contact_submissions` |
 | **CORS errors** | Supabase allows cross-origin requests; ensure URL and key are correct |
 | **Build fails** | Run `npm install` to ensure `@supabase/supabase-js` is installed |
+| **Email not received / Edge Function error** | Deploy `send-contact-email` and set `RESEND_API_KEY` in Edge Function secrets. If you set `CONTACT_WEBHOOK_SECRET`, add the same value as `VITE_CONTACT_WEBHOOK_SECRET` in `.env`. |
 
 ---
 

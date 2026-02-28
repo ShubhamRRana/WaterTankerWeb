@@ -1,6 +1,6 @@
 /**
  * Contact form API — Supabase integration
- * Inserts submissions into contact_submissions table
+ * Inserts submissions into contact_submissions table and triggers email to support@tankerhub.in via Edge Function.
  */
 
 import { supabase } from '../lib/supabase'
@@ -27,6 +27,16 @@ export async function submitContactForm(data: ContactFormData): Promise<{ ok: bo
 
     if (error) {
       return { ok: false, error: error.message }
+    }
+
+    const secret = import.meta.env.VITE_CONTACT_WEBHOOK_SECRET
+    const { error: fnError } = await supabase.functions.invoke('send-contact-email', {
+      body: data,
+      headers: secret ? { 'x-contact-secret': secret } : undefined,
+    })
+
+    if (fnError) {
+      return { ok: false, error: fnError.message }
     }
 
     return { ok: true }
