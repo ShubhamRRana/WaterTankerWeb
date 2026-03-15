@@ -129,6 +129,7 @@ function ResetPassword() {
   }
 
   const showSetPassword = !!session
+  const authNotConfigured = !supabase
 
   return (
     <main className="flex-1 min-h-screen">
@@ -148,6 +149,18 @@ function ResetPassword() {
               : 'Enter your email and we’ll send you a link to reset your password.'}
           </p>
         </header>
+
+        {authNotConfigured && (
+          <div
+            className="mb-6 p-4 rounded-lg bg-amber-50 text-amber-800 border border-amber-200"
+            role="alert"
+          >
+            <p className="font-medium">Password reset is temporarily unavailable.</p>
+            <p className="mt-1 text-sm">
+              Authentication is not configured for this site. Please try again later or contact support.
+            </p>
+          </div>
+        )}
 
         {showSetPassword ? (
           <form
@@ -324,7 +337,7 @@ function ResetPassword() {
 
             <button
               type="submit"
-              disabled={requestForm.formState.isSubmitting}
+              disabled={requestForm.formState.isSubmitting || authNotConfigured}
               className="btn-submit flex items-center justify-center gap-2"
             >
               {requestForm.formState.isSubmitting ? (
