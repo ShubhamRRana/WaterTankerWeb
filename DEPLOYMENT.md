@@ -15,10 +15,8 @@ Set these in your hosting dashboard before deploying:
 |----------|-------------|---------|
 | `VITE_APP_STORE_URL` | App Store download URL | `https://apps.apple.com/app/your-app-id` |
 | `VITE_PLAY_STORE_URL` | Play Store download URL | `https://play.google.com/store/apps/details?id=your.package.name` |
-| `VITE_SUPABASE_URL` | Supabase project URL (contact form, auth, reset password) | `https://xxxxx.supabase.co` |
+| `VITE_SUPABASE_URL` | Supabase project URL (contact form, auth) | `https://xxxxx.supabase.co` |
 | `VITE_SUPABASE_ANON_KEY` | Supabase anon/public key | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` |
-
-**Required for reset password:** If `VITE_SUPABASE_URL` or `VITE_SUPABASE_ANON_KEY` are not set at build time, the reset-password page will show "Authentication is not configured". Add both variables in your hosting dashboard and redeploy.
 
 > **Note:** Vite only exposes env vars prefixed with `VITE_`. These are baked into the build at deploy time.
 
