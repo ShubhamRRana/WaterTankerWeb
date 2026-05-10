@@ -29,6 +29,30 @@ type Status =
 
 function ResetPassword() {
   const [status, setStatus] = useState<Status>({ state: 'idle' })
+  const supabaseConfigured = isSupabaseConfigured()
+
+  // #region agent log
+  fetch('http://127.0.0.1:7244/ingest/fa599e25-345a-436f-9f8b-6c607629643b', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Debug-Session-Id': '329c12',
+    },
+    body: JSON.stringify({
+      sessionId: '329c12',
+      runId: 'pre-fix',
+      hypothesisId: 'H1',
+      location: 'src/pages/ResetPassword.tsx:33',
+      message: 'ResetPassword render supabase configuration state',
+      data: {
+        supabaseConfigured,
+        hasSupabaseUrl: !!import.meta.env.VITE_SUPABASE_URL,
+        hasSupabaseAnonKey: !!import.meta.env.VITE_SUPABASE_ANON_KEY,
+      },
+      timestamp: Date.now(),
+    }),
+  }).catch(() => {})
+  // #endregion
 
   const {
     register,
@@ -45,6 +69,24 @@ function ResetPassword() {
 
   useEffect(() => {
     if (!isSupabaseConfigured()) {
+      // #region agent log
+      fetch('http://127.0.0.1:7244/ingest/fa599e25-345a-436f-9f8b-6c607629643b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Debug-Session-Id': '329c12',
+        },
+        body: JSON.stringify({
+          sessionId: '329c12',
+          runId: 'pre-fix',
+          hypothesisId: 'H2',
+          location: 'src/pages/ResetPassword.tsx:52',
+          message: 'useEffect early exit because supabase not configured',
+          data: {},
+          timestamp: Date.now(),
+        }),
+      }).catch(() => {})
+      // #endregion
       return
     }
 
@@ -89,6 +131,24 @@ function ResetPassword() {
 
   const onSubmit = async (values: FormValues) => {
     if (!isSupabaseConfigured()) {
+      // #region agent log
+      fetch('http://127.0.0.1:7244/ingest/fa599e25-345a-436f-9f8b-6c607629643b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Debug-Session-Id': '329c12',
+        },
+        body: JSON.stringify({
+          sessionId: '329c12',
+          runId: 'pre-fix',
+          hypothesisId: 'H3',
+          location: 'src/pages/ResetPassword.tsx:94',
+          message: 'onSubmit blocked because supabase not configured',
+          data: {},
+          timestamp: Date.now(),
+        }),
+      }).catch(() => {})
+      // #endregion
       setStatus({
         state: 'error',
         message:
@@ -170,13 +230,6 @@ function ResetPassword() {
           </div>
         )}
 
-        {!isSupabaseConfigured() && (
-          <div className="mb-6 rounded-md bg-amber-50 px-4 py-3 text-sm text-amber-800">
-            Password reset is not configured for this environment. Please try
-            again later or contact support.
-          </div>
-        )}
-
         <form
           className="space-y-6"
           onSubmit={handleSubmit(onSubmit)}
@@ -195,7 +248,7 @@ function ResetPassword() {
               autoComplete="new-password"
               className="w-full rounded-md border border-primary/20 bg-background px-3 py-2 text-sm sm:text-base shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               {...register('password')}
-              disabled={isDisabled || !isSupabaseConfigured()}
+              disabled={isDisabled}
             />
             {errors.password && (
               <p className="text-xs sm:text-sm text-red-600">
@@ -217,7 +270,7 @@ function ResetPassword() {
               autoComplete="new-password"
               className="w-full rounded-md border border-primary/20 bg-background px-3 py-2 text-sm sm:text-base shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               {...register('confirmPassword')}
-              disabled={isDisabled || !isSupabaseConfigured()}
+              disabled={isDisabled}
             />
             {errors.confirmPassword && (
               <p className="text-xs sm:text-sm text-red-600">
@@ -228,7 +281,7 @@ function ResetPassword() {
 
           <button
             type="submit"
-            disabled={isDisabled || !isSupabaseConfigured()}
+            disabled={isDisabled}
             className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-2.5 text-sm sm:text-base font-medium text-white shadow-sm transition hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-primary/60"
           >
             {status.state === 'submitting' ? 'Updating password…' : 'Submit'}

@@ -1,7 +1,9 @@
 import { Helmet } from 'react-helmet-async'
-import { Droplets } from 'lucide-react'
+import { Droplets, ExternalLink } from 'lucide-react'
 
 const PAGE_TITLE = 'Water Tanker — Book Water Tankers On Demand'
+const CUSTOMER_APP_PLAY_URL =
+  'https://play.google.com/store/apps/details?id=com.watertanker.app'
 const PAGE_DESCRIPTION = 'Water Tanker connects you with trusted water suppliers. Book water tankers for home, construction, or events — simple, fast, reliable.'
 
 function Landing() {
@@ -34,44 +36,21 @@ function Landing() {
           </p>
         </div>
 
-        {/* Download links — stacked vertically on mobile, side-by-side on sm+ */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
-          {import.meta.env.VITE_APP_STORE_URL && (
-            <a
-              href={import.meta.env.VITE_APP_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg py-1 min-w-[140px] sm:min-w-0"
-              aria-label="Download on the App Store"
-            >
-              <img
-                src="/app-store-badge.svg"
-                alt="Download on the App Store"
-                className="h-11 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
-                loading="lazy"
-              />
-            </a>
-          )}
-          {import.meta.env.VITE_PLAY_STORE_URL && (
-            <a
-              href={import.meta.env.VITE_PLAY_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg py-1 min-w-[140px] sm:min-w-0"
-              aria-label="Get it on Google Play"
-            >
-              <img
-                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                alt="Get it on Google Play"
-                className="h-11 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
-                loading="lazy"
-              />
-            </a>
-          )}
-          {!import.meta.env.VITE_APP_STORE_URL && !import.meta.env.VITE_PLAY_STORE_URL && (
-            <p className="text-primary/60 text-sm italic">Download links coming soon</p>
-          )}
-        </div>
+        <p className="text-sm sm:text-base text-primary/70 mb-3">Get the app</p>
+        <a
+          href={CUSTOMER_APP_PLAY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent text-white font-semibold
+            hover:bg-accent/90 hover:shadow-md
+            focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background
+            transition-all duration-200"
+        >
+          <span>Water Tanker - Customer App</span>
+          <ExternalLink className="w-4 h-4 shrink-0" aria-hidden />
+          <span className="sr-only">(opens in a new tab)</span>
+        </a>
       </section>
     </main>
   )
