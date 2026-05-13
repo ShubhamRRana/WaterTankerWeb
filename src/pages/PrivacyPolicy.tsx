@@ -69,7 +69,23 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">3. How We Use Data</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">3. Camera</h2>
+            <p className="leading-relaxed mb-3">
+              The mobile app may request access to your device <strong>camera</strong> only when you actively choose an action that needs it (for example taking a photo), not in the background and not without your consent through the operating system&apos;s permission prompt.
+            </p>
+            <p className="leading-relaxed mb-3">
+              Camera access may be used for optional or feature-specific purposes such as uploading a profile picture, capturing images related to bookings or deliveries when you initiate capture, or (for drivers or admins) photographing documents such as licences or vehicles where those features exist. We do not use the camera for continuous recording, covert scanning of your surroundings, or advertising profiling.
+            </p>
+            <p className="leading-relaxed mb-3">
+              Photos you choose to capture are transmitted and stored using the same security practices as other app data described in this policy. They are retained only as long as needed for the stated purpose unless a longer retention period is required by law.
+            </p>
+            <p className="leading-relaxed">
+              You can deny camera permission and still use core features wherever the app supports alternatives (such as picking an existing photo from your library, if offered). You can revoke camera access at any time in your device settings; some features may be unavailable until permission is granted again.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">4. How We Use Data</h2>
             <p className="leading-relaxed mb-3">We use the information we collect to:</p>
             <ul className="list-disc pl-5 sm:pl-6 space-y-2 leading-7">
               <li><strong>Create and manage your account</strong> (email, name, phone, password)</li>
@@ -83,7 +99,7 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">4. Third Parties</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">5. Third Parties</h2>
             <p className="leading-relaxed mb-4">
               We do <strong>not</strong> sell your personal data to third parties or ad networks.
             </p>
@@ -100,7 +116,7 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">5. Data Security</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">6. Data Security</h2>
             <p className="leading-relaxed mb-3">We take reasonable steps to protect your data:</p>
             <ul className="list-disc pl-5 sm:pl-6 space-y-2 leading-7">
               <li><strong>Authentication</strong> — we use Supabase Auth; passwords are hashed and not stored in plain text</li>
@@ -114,13 +130,13 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">6. User Rights</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">7. User Rights</h2>
             <p className="leading-relaxed mb-3">You have the right to:</p>
             <ul className="list-disc pl-5 sm:pl-6 space-y-2 leading-7">
               <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
               <li><strong>Correction</strong> — ask us to correct inaccurate or incomplete data (e.g. via app profile or settings)</li>
               <li><strong>Deletion</strong> — request deletion of your account and associated data, subject to legal retention requirements</li>
-              <li><strong>Opt-out</strong> — limit or opt out of optional data (e.g. disable location, or turn off push notifications in device settings)</li>
+              <li><strong>Opt-out</strong> — limit or opt out of optional data (e.g. disable location or camera access, or turn off push notifications in device settings)</li>
               <li><strong>Withdraw consent</strong> — where we rely on consent, you may withdraw it at any time</li>
             </ul>
             <p className="leading-relaxed mt-4">
@@ -133,21 +149,21 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">7. Children&apos;s Privacy</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">8. Children&apos;s Privacy</h2>
             <p className="leading-relaxed">
               The app is not directed at children under 13. We do not knowingly collect personal data from children under 13. If you believe a child has provided us with personal data, please contact us and we will delete it promptly.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">8. Changes to This Policy</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">9. Changes to This Policy</h2>
             <p className="leading-relaxed">
               We may update this Privacy Policy from time to time. We will notify you of material changes by posting the updated policy in the app and/or by email or in-app notice, and we will update the &quot;Last updated&quot; date at the top. Your continued use of the app after the effective date of changes constitutes acceptance of the updated policy.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">9. Contact</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3 mt-2">10. Contact</h2>
             <p className="leading-relaxed mb-2">
               For privacy questions, access/deletion requests, or complaints:
             </p>
