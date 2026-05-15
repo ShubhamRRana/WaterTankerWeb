@@ -14,7 +14,11 @@ export interface ContactFormData {
 
 export async function submitContactForm(data: ContactFormData): Promise<{ ok: boolean; error?: string }> {
   if (!supabase) {
-    return { ok: false, error: 'Form service not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env' }
+    return {
+      ok: false,
+      error:
+        'Form service not configured. In .env, set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your Supabase project URL and anon key (Dashboard → Project Settings → API), then restart the dev server. See SUPABASE_SETUP.md.',
+    }
   }
 
   try {
