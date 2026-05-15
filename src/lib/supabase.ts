@@ -1,8 +1,21 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Vite bakes env at build time; ensure these are set in your hosting (e.g. Vercel) for production
-const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL as string | undefined)?.trim()
-const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined)?.trim()
+/** Normalize values from `.env` (quotes, BOM) so the client still initializes when formatting is off. */
+function normalizeEnvValue(raw: string | undefined): string | undefined {
+  if (raw === undefined) return undefined
+  let v = raw.replace(/^\uFEFF/, '').trim()
+  if (
+    (v.startsWith('"') && v.endsWith('"')) ||
+    (v.startsWith("'") && v.endsWith("'"))
+  ) {
+    v = v.slice(1, -1).trim()
+  }
+  return v || undefined
+}
+
+// Vite bakes env at build time; set vars in your host's build environment (e.g. Vercel) for production deploys.
+const supabaseUrl = normalizeEnvValue(import.meta.env.VITE_SUPABASE_URL as string | undefined)
+const supabaseAnonKey = normalizeEnvValue(import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined)
 
 function isSupabaseEnvReady(url: string | undefined, key: string | undefined): boolean {
   if (!url || !key) return false

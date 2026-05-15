@@ -12,12 +12,15 @@ export interface ContactFormData {
   message: string
 }
 
+const contactFormConfigError = import.meta.env.PROD
+  ? 'Form service not configured for this deployment. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your hosting dashboard (e.g. Vercel → Project Settings → Environment Variables) so they are available at build time, then redeploy. Local .env is not used on the server. See SUPABASE_SETUP.md.'
+  : 'Form service not configured. In the project root `.env`, set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY (Supabase Dashboard → Project Settings → API), save the file, then restart the dev server. See SUPABASE_SETUP.md.'
+
 export async function submitContactForm(data: ContactFormData): Promise<{ ok: boolean; error?: string }> {
   if (!supabase) {
     return {
       ok: false,
-      error:
-        'Form service not configured. In .env, set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your Supabase project URL and anon key (Dashboard → Project Settings → API), then restart the dev server. See SUPABASE_SETUP.md.',
+      error: contactFormConfigError,
     }
   }
 
