@@ -103,7 +103,7 @@ Submissions are stored in the database only until you enable the Edge Function. 
 4. In **Supabase Dashboard** → **Edge Functions** → **send-contact-email** → **Secrets**, add:
    - **RESEND_API_KEY** — your Resend API key (required).
    - **CONTACT_WEBHOOK_SECRET** — (optional) a random string; if set, the client must send the same value so only your app can trigger the function. Add the same value in your app env as `VITE_CONTACT_WEBHOOK_SECRET`.
-   - **FROM_EMAIL** — (optional) e.g. `Water Tanker <noreply@support.tankerhub.in>`. If unset, uses Resend’s default sender.
+   - **FROM_EMAIL** — (optional) e.g. `Water Tanker <support@tankerhub.in>`. If unset, uses Resend’s default sender.
 
 After this, each contact form submit will still insert into `contact_submissions` and will also trigger the function to email **support@tankerhub.in** (with reply-to set to the sender’s email).
 
@@ -118,7 +118,7 @@ After this, each contact form submit will still insert into `contact_submissions
 | **CORS errors** | Supabase allows cross-origin requests; ensure URL and key are correct |
 | **Build fails** | Run `npm install` to ensure `@supabase/supabase-js` is installed |
 | **Email not received / Edge Function error** | Deploy `send-contact-email` and set `RESEND_API_KEY` in Edge Function secrets. If you set `CONTACT_WEBHOOK_SECRET`, add the same value as `VITE_CONTACT_WEBHOOK_SECRET` in `.env`. |
-| **"You can only send testing emails to your own email"** | The sender was `onboarding@resend.dev`. Use your verified domain: set **FROM_EMAIL** in Edge Function secrets to e.g. `Water Tanker <noreply@support.tankerhub.in>`, or redeploy so the default `noreply@support.tankerhub.in` is used. |
+| **"You can only send testing emails to your own email"** | The sender was `onboarding@resend.dev`. Use your verified domain: set **FROM_EMAIL** in Edge Function secrets to e.g. `Water Tanker <support@tankerhub.in>`, or redeploy so the default `support@tankerhub.in` is used. |
 
 ---
 
