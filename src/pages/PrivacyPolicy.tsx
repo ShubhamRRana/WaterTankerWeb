@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 
 function PrivacyPolicy() {
-  const contactEmail = 'support@tankerhub.in'
+  const contactEmail = 'watertankerhub@support.tankerhub.in'
   const lastUpdated = '23 February 2025'
 
   return (
