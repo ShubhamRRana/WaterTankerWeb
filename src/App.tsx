@@ -1,14 +1,18 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { isVideoThemedRoute } from './lib/videoTheme'
 
 function App() {
+  const { pathname } = useLocation()
+  const isVideoThemed = isVideoThemedRoute(pathname)
+
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
+    <div className={`min-h-screen flex flex-col ${isVideoThemed ? 'bg-black' : 'bg-background'}`}>
+      {!isVideoThemed && <Header />}
       <Outlet />
-      <Footer />
+      {!isVideoThemed && <Footer />}
       <SpeedInsights />
     </div>
   )

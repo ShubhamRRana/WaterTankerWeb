@@ -1,58 +1,99 @@
 import { Helmet } from 'react-helmet-async'
-import { Droplets, ExternalLink } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { LayoutDashboard, Smartphone } from 'lucide-react'
+import { TextEffect } from '@/components/core/text-effect'
+import FadeIn from '../components/hero/FadeIn'
+import PageVideoBackground from '../components/layout/PageVideoBackground'
+import SiteNav from '../components/layout/SiteNav'
+import GlowAppLink from '../components/ui/GlowAppLink'
+import { ADMIN_APP_PLAY_URL, CUSTOMER_APP_PLAY_URL } from '../lib/appLinks'
+import {
+  ADMIN_VIDEO_GRADIENT,
+  CUSTOMER_VIDEO_GRADIENT,
+  VIDEO_BUTTON_GHOST,
+  VIDEO_CARD_BG,
+  VIDEO_TRAIL_SHADOW,
+} from '../lib/videoTheme'
 
 const PAGE_TITLE = 'Water Tanker — Book Water Tankers On Demand'
-const CUSTOMER_APP_PLAY_URL =
-  'https://play.google.com/store/apps/details?id=com.watertanker.app'
-const PAGE_DESCRIPTION = 'Water Tanker connects you with trusted water suppliers. Book water tankers for home, construction, or events — simple, fast, reliable.'
+const PAGE_DESCRIPTION =
+  'Water Tanker connects you with trusted water suppliers. Book water tankers for home, construction, or events — simple, fast, reliable.'
 
 function Landing() {
   return (
-    <main className="flex-1">
+    <PageVideoBackground className="h-screen">
       <Helmet>
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
       </Helmet>
-      {/* Hero section — responsive: mobile, tablet, desktop */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/10 text-primary mb-4 sm:mb-6">
-          <Droplets className="w-8 h-8 sm:w-10 sm:h-10" aria-hidden />
-        </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-3 sm:mb-4">
-          Water Tanker
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-primary/80 font-medium mb-6 sm:mb-8 max-w-2xl mx-auto px-1">
-          Book water tankers on demand — simple, fast, reliable.
-        </p>
 
-        {/* Brief description */}
-        <div className="max-w-2xl mx-auto text-primary/80 text-sm sm:text-base leading-relaxed mb-8 sm:mb-10 px-1">
-          <p>
-            Water Tanker connects you with trusted water suppliers in your area.
-            Whether you need water for your home, construction site, or event,
-            our app makes it easy to find and book tankers with just a few taps.
-          </p>
-        </div>
+      <SiteNav />
 
-        <p className="text-sm sm:text-base text-primary/70 mb-3">Get the app</p>
-        <a
-          href={CUSTOMER_APP_PLAY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent text-white font-semibold
-            hover:bg-accent/90 hover:shadow-md
-            focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background
-            transition-all duration-200"
-        >
-          <span>Water Tanker - Customer App</span>
-          <ExternalLink className="w-4 h-4 shrink-0" aria-hidden />
-          <span className="sr-only">(opens in a new tab)</span>
-        </a>
-      </section>
-    </main>
+      <div className="flex flex-1 flex-col justify-end pb-12 lg:pb-16">
+        <div className="lg:grid lg:grid-cols-2 lg:items-end">
+          <div>
+            <TextEffect
+              as="h1"
+              preset="fade-in-blur"
+              speedReveal={1.1}
+              speedSegment={0.3}
+              className="text-[clamp(1.125rem,6vw,4.5rem)] font-normal mb-4 text-white"
+              style={{ letterSpacing: '-0.04em' }}
+            >
+              {`Water when you need it,\ndelivered with care.`}
+            </TextEffect>
+            <FadeIn delay={800} duration={1000}>
+              <p className="text-base md:text-lg text-gray-300 mb-5 max-w-xl">
+                We connect you with trusted water suppliers. Book tankers for home,
+                construction, or events — simple, fast, reliable.
+              </p>
+            </FadeIn>
+            <FadeIn delay={1200} duration={1000}>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5 items-stretch sm:items-start">
+                <GlowAppLink
+                  href={CUSTOMER_APP_PLAY_URL}
+                  title="Water Tanker — Customer"
+                  description="Book, track, and pay for water deliveries"
+                  gradient={CUSTOMER_VIDEO_GRADIENT}
+                  trailShadow={VIDEO_TRAIL_SHADOW}
+                  cardBg={VIDEO_CARD_BG}
+                  icon={Smartphone}
+                  surface="dark"
+                />
+                <GlowAppLink
+                  href={ADMIN_APP_PLAY_URL}
+                  title="Water Tanker — Admin"
+                  description="Manage operations and deliveries"
+                  gradient={ADMIN_VIDEO_GRADIENT}
+                  trailShadow={VIDEO_TRAIL_SHADOW}
+                  cardBg={VIDEO_CARD_BG}
+                  icon={LayoutDashboard}
+                  surface="dark"
+                />
+                <Link
+                  to="/about"
+                  className={`${VIDEO_BUTTON_GHOST} self-center sm:self-auto`}
+                >
+                  Explore Now
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
+
+          <div className="mt-8 flex items-end justify-start lg:mt-0 lg:justify-end">
+            <FadeIn delay={1400} duration={1000}>
+              <div className="liquid-glass border border-[#5A6975]/50 px-6 py-3 rounded-xl">
+                <p className="text-lg md:text-xl lg:text-2xl font-light text-[#BABEBC]">
+                  Book. Track. Deliver.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </div>
+    </PageVideoBackground>
   )
 }
 

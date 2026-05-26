@@ -5,6 +5,9 @@ import { z } from 'zod'
 import { Helmet } from 'react-helmet-async'
 import { Loader2 } from 'lucide-react'
 import { submitContactForm, type ContactFormData } from '../api/contact'
+import PageVideoBackground from '../components/layout/PageVideoBackground'
+import SiteNav from '../components/layout/SiteNav'
+import { VIDEO_INPUT, VIDEO_PANEL, VIDEO_SUBMIT_BUTTON } from '../lib/videoTheme'
 
 const contactSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100, 'Name must be 100 characters or less'),
@@ -46,179 +49,146 @@ function Contact() {
   }
 
   return (
-    <main className="flex-1 min-h-screen">
+    <PageVideoBackground>
       <Helmet>
         <title>Contact Us — Water Tanker</title>
         <meta name="description" content="Contact Water Tanker. Have a question or feedback? Send us a message and we'll get back to you." />
         <meta property="og:title" content="Contact Us — Water Tanker" />
       </Helmet>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 max-w-xl">
-        <header className="mb-8 sm:mb-10">
-          <h1 className="text-2xl sm:text-3xl font-bold text-primary mb-2">
-            Contact Us
-          </h1>
-          <p className="text-primary/80 text-sm sm:text-base leading-relaxed">
-            Have a question or feedback? Send us a message and we&apos;ll get back to you.
-          </p>
-        </header>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-          {/* Name */}
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-primary mb-1.5">
-              Name
-            </label>
-            <div
-              className="glow-input-wrapper"
-              onMouseMove={(e) => { e.currentTarget.style.setProperty('--glow-x', `${e.nativeEvent.offsetX}px`); e.currentTarget.style.setProperty('--glow-y', `${e.nativeEvent.offsetY}px`) }}
-              onMouseLeave={(e) => { e.currentTarget.style.setProperty('--glow-x', '-999px'); e.currentTarget.style.setProperty('--glow-y', '-999px') }}
-            >
-              <div className="glow-input-glow" aria-hidden />
+      <SiteNav />
+
+      <main className="flex-1 py-8 sm:py-12 lg:py-16 pb-16">
+        <div className={`${VIDEO_PANEL} max-w-xl mx-auto`}>
+          <header className="mb-8 sm:mb-10">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+              Contact Us
+            </h1>
+            <p className="text-[#BABEBC] text-sm sm:text-base leading-relaxed">
+              Have a question or feedback? Send us a message and we&apos;ll get back to you.
+            </p>
+          </header>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-[#BABEBC] mb-1.5">
+                Name
+              </label>
               <input
                 id="name"
                 type="text"
                 {...register('name')}
-                className="input-field"
+                className={VIDEO_INPUT}
                 placeholder="Your name"
                 autoComplete="name"
                 disabled={isSubmitting}
                 aria-invalid={!!errors.name}
                 aria-describedby={errors.name ? 'name-error' : undefined}
               />
+              {errors.name && (
+                <p id="name-error" className="mt-1 text-sm text-red-400" role="alert">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
-            {errors.name && (
-              <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">
-                {errors.name.message}
-              </p>
-            )}
-          </div>
 
-          {/* Email */}
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-primary mb-1.5">
-              Email
-            </label>
-            <div
-              className="glow-input-wrapper"
-              onMouseMove={(e) => { e.currentTarget.style.setProperty('--glow-x', `${e.nativeEvent.offsetX}px`); e.currentTarget.style.setProperty('--glow-y', `${e.nativeEvent.offsetY}px`) }}
-              onMouseLeave={(e) => { e.currentTarget.style.setProperty('--glow-x', '-999px'); e.currentTarget.style.setProperty('--glow-y', '-999px') }}
-            >
-              <div className="glow-input-glow" aria-hidden />
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-[#BABEBC] mb-1.5">
+                Email
+              </label>
               <input
                 id="email"
                 type="email"
                 {...register('email')}
-                className="input-field"
+                className={VIDEO_INPUT}
                 placeholder="your@email.com"
                 autoComplete="email"
                 disabled={isSubmitting}
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? 'email-error' : undefined}
               />
+              {errors.email && (
+                <p id="email-error" className="mt-1 text-sm text-red-400" role="alert">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
-            {errors.email && (
-              <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
 
-          {/* Subject */}
-          <div>
-            <label htmlFor="subject" className="block text-sm font-medium text-primary mb-1.5">
-              Subject
-            </label>
-            <div
-              className="glow-input-wrapper"
-              onMouseMove={(e) => { e.currentTarget.style.setProperty('--glow-x', `${e.nativeEvent.offsetX}px`); e.currentTarget.style.setProperty('--glow-y', `${e.nativeEvent.offsetY}px`) }}
-              onMouseLeave={(e) => { e.currentTarget.style.setProperty('--glow-x', '-999px'); e.currentTarget.style.setProperty('--glow-y', '-999px') }}
-            >
-              <div className="glow-input-glow" aria-hidden />
+            <div>
+              <label htmlFor="subject" className="block text-sm font-medium text-[#BABEBC] mb-1.5">
+                Subject
+              </label>
               <input
                 id="subject"
                 type="text"
                 {...register('subject')}
-                className="input-field"
+                className={VIDEO_INPUT}
                 placeholder="What is this about?"
                 disabled={isSubmitting}
                 aria-invalid={!!errors.subject}
                 aria-describedby={errors.subject ? 'subject-error' : undefined}
               />
+              {errors.subject && (
+                <p id="subject-error" className="mt-1 text-sm text-red-400" role="alert">
+                  {errors.subject.message}
+                </p>
+              )}
             </div>
-            {errors.subject && (
-              <p id="subject-error" className="mt-1 text-sm text-red-600" role="alert">
-                {errors.subject.message}
-              </p>
-            )}
-          </div>
 
-          {/* Message */}
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-primary mb-1.5">
-              Message
-            </label>
-            <div
-              className="glow-input-wrapper"
-              onMouseMove={(e) => { e.currentTarget.style.setProperty('--glow-x', `${e.nativeEvent.offsetX}px`); e.currentTarget.style.setProperty('--glow-y', `${e.nativeEvent.offsetY}px`) }}
-              onMouseLeave={(e) => { e.currentTarget.style.setProperty('--glow-x', '-999px'); e.currentTarget.style.setProperty('--glow-y', '-999px') }}
-            >
-              <div className="glow-input-glow" aria-hidden />
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-[#BABEBC] mb-1.5">
+                Message
+              </label>
               <textarea
                 id="message"
                 rows={5}
                 {...register('message')}
-                className="input-field resize-y min-h-[120px]"
+                className={`${VIDEO_INPUT} resize-y min-h-[120px]`}
                 placeholder="Your message..."
                 disabled={isSubmitting}
                 aria-invalid={!!errors.message}
                 aria-describedby={errors.message ? 'message-error' : undefined}
               />
+              {errors.message && (
+                <p id="message-error" className="mt-1 text-sm text-red-400" role="alert">
+                  {errors.message.message}
+                </p>
+              )}
             </div>
-            {errors.message && (
-              <p id="message-error" className="mt-1 text-sm text-red-600" role="alert">
-                {errors.message.message}
-              </p>
-            )}
-          </div>
 
-          {/* Success / Error messages */}
-          {submitStatus === 'success' && (
-            <div
-              className="p-4 rounded-lg bg-green-100 text-green-800 border border-green-200"
-              role="status"
-              aria-live="polite"
-            >
-              {submitMessage}
-            </div>
-          )}
-          {submitStatus === 'error' && (
-            <div
-              className="p-4 rounded-lg bg-red-50 text-red-800 border border-red-200"
-              role="alert"
-              aria-live="assertive"
-            >
-              {submitMessage}
-            </div>
-          )}
-
-          {/* Submit button — accent color for CTA, theme-aligned focus states */}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="btn-submit"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" aria-hidden />
-                Sending...
-              </>
-            ) : (
-              'Send Message'
+            {submitStatus === 'success' && (
+              <div
+                className="p-4 rounded-lg bg-[#32414D]/60 text-[#BABEBC] border border-[#5A6975]/50"
+                role="status"
+                aria-live="polite"
+              >
+                {submitMessage}
+              </div>
             )}
-          </button>
-        </form>
-      </div>
-    </main>
+            {submitStatus === 'error' && (
+              <div
+                className="p-4 rounded-lg bg-red-950/50 text-red-300 border border-red-500/40"
+                role="alert"
+                aria-live="assertive"
+              >
+                {submitMessage}
+              </div>
+            )}
+
+            <button type="submit" disabled={isSubmitting} className={VIDEO_SUBMIT_BUTTON}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" aria-hidden />
+                  Sending...
+                </>
+              ) : (
+                'Send Message'
+              )}
+            </button>
+          </form>
+        </div>
+      </main>
+    </PageVideoBackground>
   )
 }
 
