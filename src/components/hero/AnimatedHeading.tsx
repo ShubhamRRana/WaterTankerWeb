@@ -26,15 +26,14 @@ export default function AnimatedHeading({
   return (
     <h1 className={className} style={{ letterSpacing: '-0.04em' }}>
       {lines.map((line, lineIndex) => {
-        const priorChars = lines
+        const lineOffset = lines
           .slice(0, lineIndex)
           .reduce((sum, l) => sum + l.length, 0)
 
         return (
           <span key={lineIndex} className="block whitespace-nowrap">
             {line.split('').map((char, charIndex) => {
-              const delay =
-                (priorChars + charIndex) * charDelay + lineIndex * 0
+              const delay = lineOffset * charDelay + charIndex * charDelay
 
               return (
                 <span

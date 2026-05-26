@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { VIDEO_BUTTON_PRIMARY } from '../../lib/videoTheme'
 
 const navLinks = [
   { to: '/about', label: 'About' },
@@ -15,7 +14,7 @@ export default function SiteNav() {
           to="/"
           className="text-2xl font-semibold tracking-tight text-white hover:text-gray-200 transition-colors"
         >
-          Water Tanker
+          Water Tanker Hub
         </Link>
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map(({ to, label }) => (
@@ -29,9 +28,6 @@ export default function SiteNav() {
             </li>
           ))}
         </ul>
-        <Link to="/contact" className={VIDEO_BUTTON_PRIMARY}>
-          Contact Us
-        </Link>
       </nav>
     </header>
   )
