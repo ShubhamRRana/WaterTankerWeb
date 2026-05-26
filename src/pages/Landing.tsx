@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
 import { LayoutDashboard, Smartphone } from 'lucide-react'
 import { TextEffect } from '@/components/core/text-effect'
 import FadeIn from '../components/hero/FadeIn'
@@ -10,7 +9,6 @@ import { ADMIN_APP_PLAY_URL, CUSTOMER_APP_PLAY_URL } from '../lib/appLinks'
 import {
   ADMIN_VIDEO_GRADIENT,
   CUSTOMER_VIDEO_GRADIENT,
-  VIDEO_BUTTON_GHOST,
   VIDEO_CARD_BG,
   VIDEO_TRAIL_SHADOW,
 } from '../lib/videoTheme'
@@ -42,7 +40,7 @@ function Landing() {
               className="font-playfair [font-optical-sizing:auto] text-[clamp(1.125rem,6vw,4.5rem)] font-normal mb-4 text-white"
               style={{ letterSpacing: '-0.04em' }}
             >
-              {`Water when you need it,\n delivered with care.`}
+              {`Water when you need,\n delivered with care.`}
             </TextEffect>
             <FadeIn delay={800} duration={1000}>
               <p className="font-sans text-base md:text-lg text-white mb-5 max-w-xl">
@@ -72,12 +70,6 @@ function Landing() {
                   icon={LayoutDashboard}
                   surface="dark"
                 />
-                <Link
-                  to="/about"
-                  className={`${VIDEO_BUTTON_GHOST} self-center sm:self-auto`}
-                >
-                  Explore Now
-                </Link>
               </div>
             </FadeIn>
           </div>
