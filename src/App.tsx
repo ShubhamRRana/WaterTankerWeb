@@ -9,7 +9,7 @@ function App() {
   const isVideoThemed = isVideoThemedRoute(pathname)
 
   return (
-    <div className={`min-h-screen flex flex-col ${isVideoThemed ? 'bg-black' : 'bg-background'}`}>
+    <div className={`min-h-dvh flex flex-col ${isVideoThemed ? 'bg-black' : 'bg-background'}`}>
       {!isVideoThemed && <Header />}
       <Outlet />
       {!isVideoThemed && <Footer />}

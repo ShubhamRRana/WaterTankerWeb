@@ -12,18 +12,20 @@ export default function PageVideoBackground({
 }: PageVideoBackgroundProps) {
   return (
     <div
-      className={`relative min-h-screen w-full overflow-hidden bg-black text-white ${className}`}
+      className={`relative min-h-dvh w-full overflow-hidden bg-black text-white ${className}`}
     >
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src={HERO_VIDEO_URL}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden
-      />
-      <div className="relative z-10 flex min-h-screen flex-col px-6 md:px-12 lg:px-16">
+      <div className="pointer-events-none fixed inset-0 z-0 bg-black">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src={HERO_VIDEO_URL}
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden
+        />
+      </div>
+      <div className="relative z-10 flex min-h-dvh flex-col px-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] md:px-12 lg:px-16">
         {children}
       </div>
     </div>

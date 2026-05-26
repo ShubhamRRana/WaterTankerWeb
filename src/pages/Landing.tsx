@@ -19,7 +19,7 @@ const PAGE_DESCRIPTION =
 
 function Landing() {
   return (
-    <PageVideoBackground className="h-screen">
+    <PageVideoBackground className="h-dvh">
       <Helmet>
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
@@ -34,13 +34,14 @@ function Landing() {
           <div>
             <TextEffect
               as="h1"
+              per="line"
               preset="fade-in-blur"
               speedReveal={1.1}
               speedSegment={0.3}
-              className="font-playfair [font-optical-sizing:auto] text-fluid-hero font-normal mb-4 text-white"
+              className="font-playfair [font-optical-sizing:auto] text-fluid-hero font-normal leading-none mb-4 text-white"
               style={{ letterSpacing: '-0.04em' }}
             >
-              {`Water when you need,\n delivered with care.`}
+              {`Water when you need,\ndelivered with care.`}
             </TextEffect>
             <FadeIn delay={800} duration={1000}>
               <p className="font-sans text-fluid-lead text-white mb-5 max-w-xl">

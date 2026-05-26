@@ -6,12 +6,19 @@
 @layer base {
   html {
     @apply antialiased;
+    background-color: #000;
   }
   body {
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     @apply text-primary font-sans leading-relaxed;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+  }
+  #root {
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
   }
 }
 
