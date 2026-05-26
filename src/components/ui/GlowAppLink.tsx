@@ -58,7 +58,7 @@ export default function GlowAppLink({
           </div>
           <div className="min-w-0 flex-1 text-left">
             <p
-              className={`font-medium text-base sm:text-lg tracking-tight truncate ${
+              className={`font-medium text-fluid-card-title tracking-tight truncate ${
                 isDark ? 'text-white' : 'text-primary'
               }`}
             >
@@ -66,7 +66,7 @@ export default function GlowAppLink({
             </p>
             {description ? (
               <p
-                className={`text-[13px] leading-snug mt-0.5 line-clamp-2 ${
+                className={`text-fluid-card-desc mt-0.5 line-clamp-2 ${
                   isDark ? 'text-gray-400' : 'text-primary/70'
                 }`}
               >

@@ -17,7 +17,7 @@ export default function SiteNav() {
         <div className="flex items-center justify-between">
           <Link
             to="/"
-            className="font-playfair text-2xl font-semibold tracking-tight text-white hover:text-gray-200 transition-colors"
+            className="font-playfair text-fluid-nav-logo font-semibold tracking-tight text-white hover:text-gray-200 transition-colors"
             onClick={() => setMobileOpen(false)}
           >
             Water Tanker Hub
@@ -28,7 +28,7 @@ export default function SiteNav() {
               <li key={to}>
                 <Link
                   to={to}
-                  className="text-sm text-white hover:text-gray-300 transition-colors"
+                  className="text-fluid-nav-link text-white hover:text-gray-300 transition-colors"
                 >
                   {label}
                 </Link>
@@ -57,7 +57,7 @@ export default function SiteNav() {
               <li key={to}>
                 <Link
                   to={to}
-                  className="block rounded-lg px-2 py-2 text-sm text-white hover:bg-white/10 hover:text-gray-200 transition-colors"
+                  className="block rounded-lg px-2 py-2 text-fluid-nav-link text-white hover:bg-white/10 hover:text-gray-200 transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {label}

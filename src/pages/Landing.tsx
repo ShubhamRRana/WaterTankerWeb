@@ -37,13 +37,13 @@ function Landing() {
               preset="fade-in-blur"
               speedReveal={1.1}
               speedSegment={0.3}
-              className="font-playfair [font-optical-sizing:auto] text-[clamp(1.125rem,6vw,4.5rem)] font-normal mb-4 text-white"
+              className="font-playfair [font-optical-sizing:auto] text-fluid-hero font-normal mb-4 text-white"
               style={{ letterSpacing: '-0.04em' }}
             >
               {`Water when you need,\n delivered with care.`}
             </TextEffect>
             <FadeIn delay={800} duration={1000}>
-              <p className="font-sans text-base md:text-lg text-white mb-5 max-w-xl">
+              <p className="font-sans text-fluid-lead text-white mb-5 max-w-xl">
                 We connect you with trusted water suppliers. Book tankers for home,
                 construction, or events — simple, fast, reliable.
               </p>
@@ -77,7 +77,7 @@ function Landing() {
           <div className="mt-8 flex items-end justify-start font-[system-ui,-apple-system,BlinkMacSystemFont,sans-serif] lg:mt-0 lg:justify-end">
             <FadeIn delay={1400} duration={1000}>
               <div className="liquid-glass border border-[#5A6975]/50 px-6 py-3 rounded-xl">
-                <p className="text-lg md:text-xl lg:text-2xl font-light text-[#BABEBC]">
+                <p className="text-fluid-tagline font-light text-[#BABEBC]">
                   Book. Track. Deliver.
                 </p>
               </div>
