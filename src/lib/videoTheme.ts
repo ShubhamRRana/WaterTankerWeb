@@ -21,8 +21,14 @@ export const VIDEO_TRAIL_SHADOW =
 
 export const VIDEO_CARD_BG = VIDEO_PALETTE.shadow
 
-export const HERO_VIDEO_URL =
+const HERO_VIDEO_FALLBACK =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260403_050628_c4e32401-fab4-4a27-b7a8-6e9291cd5959.mp4'
+
+export const HERO_VIDEO_URL =
+  import.meta.env.VITE_HERO_VIDEO_URL || HERO_VIDEO_FALLBACK
+
+export const HERO_BACKGROUND_IMAGE =
+  import.meta.env.VITE_HERO_BACKGROUND_IMAGE || '/hero-background.jpg'
 
 export const VIDEO_BUTTON_PRIMARY =
   'px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 border border-[#5A6975]/50 bg-gradient-to-br from-[#32414D] to-[#101916] text-[#BABEBC] hover:from-[#5A6975] hover:to-[#32414D] hover:text-white hover:border-[#8A9399]/60'
