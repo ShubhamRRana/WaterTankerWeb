@@ -1,7 +1,7 @@
 const CUSTOMER_FALLBACK =
   'https://play.google.com/store/apps/details?id=com.watertanker.app'
 const ADMIN_FALLBACK =
-  'https://play.google.com/store/apps/details?id=com.watertanker.admin'
+  'https://play.google.com/store/apps/details?id=in.tankerhub.admin'
 
 export const CUSTOMER_APP_PLAY_URL =
   import.meta.env.VITE_PLAY_STORE_URL || CUSTOMER_FALLBACK

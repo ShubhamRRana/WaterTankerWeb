@@ -52,7 +52,7 @@ export default function GlowAppLink({
           }}
           size={100}
         />
-        <div className="relative flex h-full w-full items-center gap-4 rounded-[20px] p-4 sm:p-5">
+        <div className="font-playfair relative flex h-full w-full items-center gap-4 rounded-[20px] p-4 sm:p-5">
           <div className={isDark ? 'text-white/90' : 'text-primary/90'}>
             <Icon size={28} strokeWidth={2.5} aria-hidden />
           </div>

@@ -12,7 +12,7 @@ export default function SiteNav() {
       <nav className="liquid-glass flex items-center justify-between rounded-xl px-4 py-2">
         <Link
           to="/"
-          className="text-2xl font-semibold tracking-tight text-white hover:text-gray-200 transition-colors"
+          className="font-playfair text-2xl font-semibold tracking-tight text-white hover:text-gray-200 transition-colors"
         >
           Water Tanker Hub
         </Link>
