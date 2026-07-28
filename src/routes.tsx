@@ -2,6 +2,8 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 import App from './App'
 import Landing from './pages/Landing'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import RefundPolicy from './pages/RefundPolicy'
+import TermsAndConditions from './pages/TermsAndConditions'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import AuthSuccess from './pages/AuthSuccess'
@@ -15,6 +17,8 @@ export const router = createBrowserRouter([
       { index: true, element: <Landing /> },
       { path: 'about', element: <About /> },
       { path: 'privacy', element: <PrivacyPolicy /> },
+      { path: 'refund', element: <RefundPolicy /> },
+      { path: 'terms', element: <TermsAndConditions /> },
       { path: 'contact', element: <Contact /> },
       { path: 'auth/success', element: <AuthSuccess /> },
       { path: 'auth/reset-password', element: <ResetPassword /> },

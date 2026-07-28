@@ -36,7 +36,7 @@ export const VIDEO_BUTTON_PRIMARY =
 export const VIDEO_BUTTON_GHOST =
   'liquid-glass border border-[#5A6975]/50 px-8 py-3 rounded-lg font-medium transition-all duration-200 text-[#BABEBC] hover:border-[#494010]/70 hover:text-white hover:bg-[#32414D]/35'
 
-export const VIDEO_PAGE_ROUTES = ['/', '/about', '/privacy', '/contact'] as const
+export const VIDEO_PAGE_ROUTES = ['/', '/about', '/privacy', '/refund', '/terms', '/contact'] as const
 
 export function isVideoThemedRoute(pathname: string) {
   return (VIDEO_PAGE_ROUTES as readonly string[]).includes(pathname)

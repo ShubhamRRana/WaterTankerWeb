@@ -5,6 +5,8 @@ import { Menu, X } from 'lucide-react'
 const navLinks = [
   { to: '/about', label: 'About' },
   { to: '/privacy', label: 'Privacy' },
+  { to: '/terms', label: 'Terms' },
+  { to: '/refund', label: 'Refunds' },
   { to: '/contact', label: 'Contact' },
 ]
 
