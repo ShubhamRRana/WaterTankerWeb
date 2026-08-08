@@ -66,45 +66,53 @@ function ResetPassword() {
     }
 
     const run = async () => {
-      setStatus({ state: 'initializing' })
+      try {
+        setStatus({ state: 'initializing' })
 
-      if (code && type === 'recovery') {
-        const { error } = await supabase!.auth.exchangeCodeForSession(code)
-        if (error) {
-          finish({
-            state: 'error',
-            message:
-              'This password reset link is invalid or has expired. Please request a new one from the app.',
-          })
+        if (code && type === 'recovery') {
+          const { error } = await supabase!.auth.exchangeCodeForSession(code)
+          if (error) {
+            finish({
+              state: 'error',
+              message:
+                'This password reset link is invalid or has expired. Please request a new one from the app.',
+            })
+            return
+          }
+          finish({ state: 'ready' })
           return
         }
-        finish({ state: 'ready' })
-        return
-      }
 
-      const tokens = parseRecoveryTokensFromUrl(window.location.href)
-      if (tokens) {
-        const { error } = await supabase!.auth.setSession({
-          access_token: tokens.access_token,
-          refresh_token: tokens.refresh_token,
+        const tokens = parseRecoveryTokensFromUrl(window.location.href)
+        if (tokens) {
+          const { error } = await supabase!.auth.setSession({
+            access_token: tokens.access_token,
+            refresh_token: tokens.refresh_token,
+          })
+          if (error) {
+            finish({
+              state: 'error',
+              message:
+                'This password reset link is invalid or has expired. Please request a new one from the app.',
+            })
+            return
+          }
+          finish({ state: 'ready' })
+          return
+        }
+
+        finish({
+          state: 'error',
+          message:
+            'This password reset link is invalid or has expired. Please request a new one from the app.',
         })
-        if (error) {
-          finish({
-            state: 'error',
-            message:
-              'This password reset link is invalid or has expired. Please request a new one from the app.',
-          })
-          return
-        }
-        finish({ state: 'ready' })
-        return
+      } catch {
+        finish({
+          state: 'error',
+          message:
+            'Unable to verify your reset link right now. Please try again in a moment.',
+        })
       }
-
-      finish({
-        state: 'error',
-        message:
-          'This password reset link is invalid or has expired. Please request a new one from the app.',
-      })
     }
 
     void run()
