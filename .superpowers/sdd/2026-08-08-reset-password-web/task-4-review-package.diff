@@ -1,0 +1,77 @@
+﻿diff --git a/.env.example b/.env.example
+index 60da884..2aa9c7d 100644
+--- a/.env.example
++++ b/.env.example
+@@ -12,23 +12,23 @@
+ EXPO_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+ EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your-key-here
+ 
+ # Legacy fallback during migration (anon JWT key ΓÇö remove after switching to publishable key)
+ # EXPO_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+ 
+ # Auth success page URL (add to Supabase Redirect URLs)
+ # Used as redirect after email verification. Default: https://tankerhub.in/auth/success
+ EXPO_PUBLIC_AUTH_SUCCESS_URL=https://tankerhub.in/auth/success
+ 
+-# Password reset: deep link that opens the app so the user sets a new password in-app.
+-# Must match app.config.js scheme and be listed in Supabase Auth ΓåÆ URL Configuration ΓåÆ Redirect URLs.
+-EXPO_PUBLIC_PASSWORD_RESET_REDIRECT_URL=wtccustomer://reset-password
++# Password reset: web page where users set a new password after clicking the email link.
++# Must be listed in Supabase Auth ΓåÆ URL Configuration ΓåÆ Redirect URLs.
++EXPO_PUBLIC_PASSWORD_RESET_REDIRECT_URL=https://tankerhub.in/auth/reset-password
+ 
+ # Razorpay (client ΓÇö Key ID only; secret stays in Supabase Edge Function secrets)
+ EXPO_PUBLIC_RAZORPAY_KEY_ID=rzp_test_your_key_id_here
+ 
+ # Server-side only (for migration scripts, not used in app)
+ #  NEVER commit the actual secret key to Git
+ #  This is a placeholder - replace with real value only in .env file
+ SUPABASE_SECRET_KEY=sb_secret_your-key-here
+ 
+ # Legacy fallback during migration (service_role JWT ΓÇö remove after switching to secret key)
+diff --git a/src/__tests__/services/auth.password.test.ts b/src/__tests__/services/auth.password.test.ts
+index 698fbef..00b06af 100644
+--- a/src/__tests__/services/auth.password.test.ts
++++ b/src/__tests__/services/auth.password.test.ts
+@@ -23,21 +23,21 @@ afterEach(() => {
+ describe('AuthService.requestPasswordReset', () => {
+   it('succeeds when Supabase resetPasswordForEmail returns no error', async () => {
+     (supabase.auth.resetPasswordForEmail as jest.Mock).mockResolvedValue({ error: null });
+ 
+     const result = await AuthService.requestPasswordReset('user@test.com');
+ 
+     expect(result.success).toBe(true);
+     expect(supabase.auth.resetPasswordForEmail).toHaveBeenCalledWith(
+       expect.stringContaining('user@test.com'),
+       expect.objectContaining({
+-        redirectTo: expect.stringMatching(/^wtccustomer:\/\//),
++        redirectTo: 'https://tankerhub.in/auth/reset-password',
+       })
+     );
+   });
+ 
+   it('returns server error when reset fails for a non-rate-limit reason', async () => {
+     (supabase.auth.resetPasswordForEmail as jest.Mock).mockResolvedValue({
+       error: { message: 'SMTP error' },
+     });
+ 
+     const result = await AuthService.requestPasswordReset('user@test.com');
+diff --git a/src/utils/recoveryLink.ts b/src/utils/recoveryLink.ts
+index 51f7183..6de3a59 100644
+--- a/src/utils/recoveryLink.ts
++++ b/src/utils/recoveryLink.ts
+@@ -31,13 +31,13 @@ export function parseRecoveryTokensFromUrl(url: string): RecoveryTokens | null {
+       refresh_token: params.refresh_token,
+       type: params.type,
+     };
+   }
+   return null;
+ }
+ 
+ export function getPasswordResetRedirectUrl(): string {
+   return (
+     process.env.EXPO_PUBLIC_PASSWORD_RESET_REDIRECT_URL ||
+-    'wtccustomer://reset-password'
++    'https://tankerhub.in/auth/reset-password'
+   );
+ }
