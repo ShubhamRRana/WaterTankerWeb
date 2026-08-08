@@ -20,6 +20,12 @@ Set these in your hosting dashboard before deploying:
 
 > **Note:** Vite only exposes env vars prefixed with `VITE_`. These are baked into the build at deploy time.
 
+### Password reset redirect
+
+Add `https://tankerhub.in/auth/reset-password` to **Supabase Dashboard → Authentication → URL Configuration → Redirect URLs**.
+
+The mobile app sends password recovery emails with this redirect. Vercel must have `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` set so the reset page can establish a session.
+
 ---
 
 ## Vercel
@@ -59,3 +65,4 @@ Set these in your hosting dashboard before deploying:
 - [ ] Privacy policy page loads at `/privacy`
 - [ ] All nav and footer links work
 - [ ] Site is responsive on mobile
+- [ ] Password reset link from app email opens `/auth/reset-password` and allows setting a new password
